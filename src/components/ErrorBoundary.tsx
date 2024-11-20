@@ -1,30 +1,32 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-// Define the props type with children explicitly declared
-interface ErrorBoundaryProps {
-  children: ReactNode; // children can be any valid React node
-}
+type ErrorBoundaryProps = {
+  children: React.ReactNode;
+};
 
-interface ErrorBoundaryState {
+type ErrorBoundaryState = {
   hasError: boolean;
-}
+};
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state = { hasError: false };
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, info: any) {
-    console.error("ErrorBoundary caught an error:", error, info);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error("ErrorBoundary caught an error", error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return <h1>Something went wrong.</h1>;
     }
-    return this.props.children; // Now this is correctly typed
+    return this.props.children;
   }
 }
 
