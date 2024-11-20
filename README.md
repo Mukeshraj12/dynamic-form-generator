@@ -1,46 +1,167 @@
-# Getting Started with Create React App
+# Dynamic Form Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **dynamic form generator** built with React, TypeScript, and Tailwind CSS. This application allows you to generate forms dynamically from a JSON schema, with real-time validation and a live preview.
 
-## Available Scripts
+[Click here for the Live Demo](https://dynamic-form-generator-eqewh37cx-mukesh-rajs-projects.vercel.app/).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Real-time JSON schema validation and form generation.
+- Support for multiple input types (text, email, password, select, radio, checkbox, textarea).
+- Responsive design with Tailwind CSS.
+- Error boundaries for stability.
+- Dark mode support (bonus feature if implemented).
+- Example JSON schemas to test functionality.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Ensure you have the following installed:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Node.js** (v16+)
+- **npm** or **yarn**
+- **Git**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Steps to Run Locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mukeshraj12/dynamic-form-generator.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd dynamic-form-generator
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-### `npm run eject`
+## Example JSON Schemas
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Here’s a sample JSON schema to test the form generator:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Example 1: User Registration Form
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```json
+{
+  "formTitle": "User Registration",
+  "formDescription": "Please fill out the form to register.",
+  "fields": [
+    {
+      "id": "username",
+      "type": "text",
+      "label": "Username",
+      "required": true,
+      "placeholder": "Enter your username"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Email Address",
+      "required": true,
+      "placeholder": "you@example.com",
+      "validation": {
+        "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+        "message": "Please enter a valid email address"
+      }
+    },
+    {
+      "id": "password",
+      "type": "password",
+      "label": "Password",
+      "required": true,
+      "placeholder": "Enter your password",
+      "validation": {
+        "minLength": 6,
+        "message": "Password must be at least 6 characters long"
+      }
+    }
+  ]
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can copy and paste this schema into the JSON editor in the app to see the generated form.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Local Development Guide
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Project Structure
+
+```
+dynamic-form-generator/
+├── src/
+│   ├── components/          # React components
+│   │   ├── Editor.tsx       # JSON editor
+│   │   ├── FormGenerator.tsx # Form generation logic
+│   │   ├── ErrorBoundary.tsx # Error boundary component
+│   ├── utils/               # Utility functions (e.g., schema validation)
+│   ├── App.tsx              # Main application
+│   └── index.tsx            # Entry point
+├── public/                  # Static assets
+├── tailwind.config.js       # Tailwind CSS configuration
+├── package.json             # Dependencies and scripts
+├── README.md                # Documentation
+```
+
+### Scripts
+
+- **`npm start`**: Start the development server.
+- **`npm test`**: Run tests using Jest and Playwright.
+- **`npm run build`**: Build the app for production.
+- **`npm run lint`**: Run ESLint to check for coding issues.
+
+### Development Notes
+
+- **JSON Schema Updates:** Edit the JSON schema in the left panel of the app to see real-time form updates on the right.
+- **Responsive Design:** The layout adjusts for mobile devices. On smaller screens, the JSON editor and preview stack vertically.
+- **Testing:** Write tests in the `__tests__` folder for both unit and end-to-end testing.
+
+---
+
+## Contribution Guide
+
+1. Fork the repository and clone it locally.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature-name"
+   ```
+4. Push the changes:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Contact
+
+For questions or suggestions, feel free to open an issue or contact the repository owner.
+
+---
+
+You can modify this README as needed to suit your project requirements. Let me know if you need additional help! 😊
